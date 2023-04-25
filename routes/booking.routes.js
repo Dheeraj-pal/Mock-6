@@ -16,13 +16,13 @@ bookingRouter.post("/", async (req, res) => {
     } else if (!flight) {
       res.send({ msg: "flight not found" });
     } else {
-      const book = new BookingModel({ users, flights });
-      await BookingModel.bulkSave();
-      res, send({ msg: "Flight booked", book });
+      const book = new BookingModel({ user: users, flight: flights });
+      await book.save();
+      res.send({ msg: "Flight booked", book });
     }
   } catch (error) {
     console.log("Error while booking the flight", error);
-    res.send("Error while bookingh the flight");
+    res.send("Error while booking the flight");
   }
 });
 
