@@ -26,6 +26,11 @@ bookingRouter.post("/", async (req, res) => {
   }
 });
 
+bookingRouter.get("/dashboard", async (req, res) => {
+  const bookings = await BookingModel.find();
+  res.send(bookings);
+});
+
 module.exports = {
   bookingRouter,
 };
